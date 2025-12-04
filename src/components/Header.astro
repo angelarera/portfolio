@@ -1,0 +1,25 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+export interface Props {
+  showThemeToggle?: boolean;
+}
+
+const { showThemeToggle = false } = Astro.props;
+---
+
+<header class="header">
+  <div class="header__logo">LOGO</div>
+
+  <div class="header__switch-navigation">
+    {showThemeToggle && <ThemeToggle />}
+    <nav class="header__navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

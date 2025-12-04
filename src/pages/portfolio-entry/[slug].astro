@@ -1,0 +1,16 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+const { entry } = Astro.props;
+---
+
+<Layout title={entry.title} showThemeToggle={false}>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.vibeThemeManager) {
+        // TODO: Switch to CMS colours
+        window.vibeThemeManager.setPortfolioTheme("#ff0000", "#ffffff");
+      }
+    });
+  </script>
+</Layout>

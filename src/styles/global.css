@@ -1,1 +1,16 @@
 @import "./fonts.css";
+@import "./themes.css";
+
+body {
+  font-family: "LexendVariable", sans-serif;
+  background-color: var(--bg-colour);
+  color: var(--text-colour);
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+::selection {
+  background-color: var(--text-colour);
+  color: var(--bg-colour);
+}

@@ -1,0 +1,39 @@
+:root {
+  --neutral-bg-colour: #ffffff;
+  --neutral-text-colour: #282828;
+}
+
+[data-theme="default"] {
+  --bg-colour: #fcf9f1;
+  --text-colour: #be4575;
+  --accent-colour: #ffc300;
+}
+
+[data-theme="theme-2"] {
+  --bg-colour: #845ec2;
+  --text-colour: #c4fcef;
+  --accent-colour: #ffc300;
+}
+
+[data-theme="theme-3"] {
+  --bg-colour: #6694d9;
+  --text-colour: #ffffca;
+  --accent-colour: #ffc300;
+}
+
+[data-theme="theme-4"] {
+  --bg-colour: #c9f8c8;
+  --text-colour: #390a3a;
+  --accent-colour: #ffc300;
+}
+
+[data-theme="theme-5"] {
+  --bg-colour: #ef6b6e;
+  --text-colour: #fff9b2;
+  --accent-colour: #ffc300;
+}
+
+[data-theme="portfolio-entry"] {
+  --bg-colour: var(--entry-bg, #ffffff);
+  --text-colour: var(--entry-text, #000000);
+}

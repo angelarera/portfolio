@@ -1,18 +1,18 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 export interface Props {
-  showThemeToggle?: boolean;
+  showThemeSwitcher?: boolean;
 }
 
-const { showThemeToggle = false } = Astro.props;
+const { showThemeSwitcher = false } = Astro.props;
 ---
 
 <header class="header">
   <div class="header__logo">LOGO</div>
 
   <div class="header__switch-navigation">
-    {showThemeToggle && <ThemeToggle />}
+    {showThemeSwitcher && <ThemeSwitcher />}
     <nav class="header__navigation">
       <ul>
         <li><a href="#about">About</a></li>

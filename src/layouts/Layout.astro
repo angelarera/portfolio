@@ -4,10 +4,10 @@ import { Header, Footer } from "@components";
 
 export interface Props {
   title: string;
-  showThemeToggle?: boolean;
+  showThemeSwitcher?: boolean;
 }
 
-const { title, showThemeToggle = false } = Astro.props;
+const { title, showThemeSwitcher = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +21,7 @@ const { title, showThemeToggle = false } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header showThemeToggle={showThemeToggle} />
+    <Header showThemeSwitcher={showThemeSwitcher} />
 
     <main>
       <slot />
@@ -31,9 +31,8 @@ const { title, showThemeToggle = false } = Astro.props;
 
     <!-- Theme manager initializing -->
     <script>
-      // Carga diferida para no bloquear la renderización
       window.addEventListener("DOMContentLoaded", () => {
-        import("/src/scripts/theme-client.ts");
+        import("@scripts/theme-client.ts");
       });
     </script>
   </body>

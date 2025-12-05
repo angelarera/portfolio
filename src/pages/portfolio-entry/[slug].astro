@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 const { entry } = Astro.props;
 ---
 
-<Layout title={entry.title} showThemeToggle={false}>
+<Layout title={entry.title} showThemeSwitcher={false}>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       if (window.vibeThemeManager) {

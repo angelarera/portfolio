@@ -1,5 +1,21 @@
 @import "./fonts.css";
 @import "./themes.css";
+@import "./grid.css";
+
+:root {
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: "LexendVariable", sans-serif;
@@ -13,4 +29,14 @@ body {
 ::selection {
   background-color: var(--text-colour);
   color: var(--bg-colour);
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--text-colour);
+  text-decoration: none;
 }

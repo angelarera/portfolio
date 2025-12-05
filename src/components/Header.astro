@@ -171,7 +171,7 @@ const { showThemeSwitcher = false } = Astro.props;
     transform-origin: left;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     .header {
       justify-content: space-between;
     }
@@ -207,9 +207,10 @@ const { showThemeSwitcher = false } = Astro.props;
     .header__link {
       color: var(--text-colour);
       font-size: var(--text-sm);
-      font-weight: 600;
+      font-weight: 700;
       visibility: visible;
       opacity: 1;
+      transition: none;
     }
 
     .header__link::before {

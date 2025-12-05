@@ -18,6 +18,9 @@
   --text-xl: 2rem;
   --text-2xl: 3.5rem;
   --text-3xl: 7rem;
+
+  /* border radius */
+  --radius-full: 9999px;
 }
 
 * {
@@ -60,6 +63,12 @@ ul {
 a {
   color: var(--text-colour);
   text-decoration: none;
+}
+
+button {
+  font-family: "Lexend", sans-serif;
+  font-weight: 800;
+  font-size: var(--text-base);
 }
 
 @media (min-width: 768px) {

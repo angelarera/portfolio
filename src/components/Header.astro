@@ -13,6 +13,11 @@ const { showThemeSwitcher = false } = Astro.props;
 
   <div class="header__switch-navigation">
     {showThemeSwitcher && <ThemeSwitcher />}
+    <button class="header__burger" aria-label="Open navigation menu">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
     <nav class="header__navigation">
       <ul>
         <li><a href="#about">About</a></li>
@@ -26,11 +31,13 @@ const { showThemeSwitcher = false } = Astro.props;
 
 <style>
   .header {
+    padding: var(--space-md) 0;
     display: flex;
     justify-content: center;
   }
 
   .header__switch-navigation {
     position: fixed;
+    bottom: var(--space-lg);
   }
 </style>

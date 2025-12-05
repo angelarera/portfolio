@@ -1,8 +1,39 @@
 ---
-import Arrow from "./Arrow.astro";
+import Arrow from "@/assets/icons/arrow.svg";
 ---
 
 <button class="theme-switcher" id="theme-switcher" aria-label="Shift the vibe">
   Shift the vibe
-  <Arrow />
+  <Arrow class="arrow-icon" />
 </button>
+
+<style>
+  .theme-switcher {
+    padding: var(--space-sm) var(--space-md);
+    color: var(--text-colour);
+    background-color: var(--bacgkround-colour);
+    border: 4px solid var(--text-colour);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .arrow-icon {
+    margin-left: var(--space-xs);
+    transition:
+      all 0.3s ease-in-out,
+      rotate 0.3s 0.3s ease-in-out;
+  }
+
+  .theme-switcher:hover {
+    color: var(--next-text-colour);
+    background-color: var(--next-bg-colour);
+    border: 4px solid var(--next-text-colour);
+  }
+
+  .theme-switcher:hover .arrow-icon {
+    rotate: 45deg;
+  }
+</style>

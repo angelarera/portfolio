@@ -11,33 +11,241 @@ const { showThemeSwitcher = false } = Astro.props;
 <header class="header container">
   <div class="header__logo">LOGO</div>
 
-  <div class="header__switch-navigation">
-    {showThemeSwitcher && <ThemeSwitcher />}
+  <nav class="header__navigation">
+    <ul class="header__navigation-list">
+      <li><a class="header__link" href="#about">About</a></li>
+      <li><a class="header__link" href="#work">Work</a></li>
+      <li><a class="header__link" href="#skills">Skills</a></li>
+      <li><a class="header__link" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="header__switch-burger">
     <button class="header__burger" aria-label="Open navigation menu">
       <div></div>
       <div></div>
       <div></div>
     </button>
-    <nav class="header__navigation">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    {showThemeSwitcher && <ThemeSwitcher />}
   </div>
 </header>
 
 <style>
   .header {
-    padding: var(--space-md) 0;
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
-  .header__switch-navigation {
+  .header__switch-burger {
     position: fixed;
     bottom: var(--space-lg);
+    display: flex;
+    z-index: 10;
+  }
+
+  .header__burger {
+    width: 5.5rem;
+    padding: 1.15rem 1.5rem;
+    margin-right: 0.5rem;
+    background-color: var(--bg-colour);
+    border: 4px solid var(--text-colour);
+    border-radius: var(--radius-full);
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .header__burger > div {
+    width: 100%;
+    height: 0.25rem;
+    background-color: var(--text-colour);
+    transition:
+      rotate 0.5s,
+      translate 0.5s 0.5s ease-in-out;
+  }
+
+  .header__navigation.opened
+    ~ .header__switch-burger
+    .header__burger
+    > div:first-child {
+    translate: 0 0.5rem;
+    rotate: 140deg;
+    transition:
+      translate 0.5s,
+      rotate 0.5s 0.5s ease-in-out;
+  }
+
+  .header__navigation.opened
+    ~ .header__switch-burger
+    .header__burger
+    > div:nth-child(2) {
+    rotate: 40deg;
+    transition: rotate 0.5s 0.5s ease-in-out;
+  }
+
+  .header__navigation.opened
+    ~ .header__switch-burger
+    .header__burger
+    > div:last-child {
+    translate: 0 -0.5rem;
+    rotate: 40deg;
+    transition:
+      translate 0.5s,
+      rotate 0.5s 0.5s ease-in-out;
+  }
+
+  .header__navigation {
+    position: fixed;
+    width: 100%;
+    max-height: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text-colour);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out,
+      max-height 0.5s ease-in-out;
+  }
+
+  .header__navigation.opened {
+    max-height: 100dvh;
+  }
+
+  .header__navigation-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__navigation-list li {
+    margin-bottom: var(--space-sm);
+  }
+
+  .header__navigation-list li:last-child {
+    margin-bottom: calc(
+      4rem + var(--space-lg)
+    ); /* to center it while considering the floating buttons */
+  }
+
+  .header__link {
+    position: relative;
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--bg-colour);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s 0.5s ease-in-out;
+  }
+
+  .header__navigation.opened .header__link {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .header__link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 8px;
+    background-color: var(--bg-colour);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .header__link:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      justify-content: space-between;
+    }
+
+    .header__switch-burger {
+      position: static;
+      order: 2;
+    }
+
+    .header__burger {
+      display: none;
+    }
+
+    .header__navigation {
+      position: static;
+      width: auto;
+      max-height: none;
+      background-color: transparent;
+      transition: none;
+      order: 3;
+    }
+
+    .header__navigation-list {
+      flex-direction: row;
+    }
+
+    .header__navigation-list li,
+    .header__navigation-list li:last-child {
+      margin-bottom: 0;
+      margin-left: var(--space-md);
+    }
+
+    .header__link {
+      color: var(--text-colour);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .header__link::before {
+      bottom: -3px;
+      height: 4px;
+      background-color: var(--text-colour);
+    }
   }
 </style>
+
+<script>
+  if (typeof window !== "undefined") {
+    const burgerBtn = document.querySelector(".header__burger");
+    const headerNavigation = document.querySelector(".header__navigation");
+
+    if (burgerBtn && headerNavigation) {
+      burgerBtn.addEventListener("click", () => {
+        headerNavigation.classList.toggle("opened");
+
+        const isExpanded = headerNavigation.classList.contains("opened");
+        burgerBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        burgerBtn.setAttribute(
+          "aria-label",
+          isExpanded ? "Close menu" : "Open menu",
+        );
+      });
+
+      document.querySelectorAll(".header__navigation a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth < 768) {
+            headerNavigation.classList.remove("opened");
+            burgerBtn.setAttribute("aria-expanded", "false");
+            burgerBtn.setAttribute("aria-label", "Open menu");
+          }
+        });
+      });
+    }
+  }
+</script>

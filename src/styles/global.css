@@ -71,7 +71,7 @@ button {
   font-size: var(--text-base);
 }
 
-@media (min-width: 768px) {
+.arrow-btn:hover @media (min-width: 768px) {
   body {
     font-size: var(--text-lg);
   }

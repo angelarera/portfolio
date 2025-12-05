@@ -8,7 +8,7 @@ export interface Props {
 const { showThemeSwitcher = false } = Astro.props;
 ---
 
-<header class="header">
+<header class="header container">
   <div class="header__logo">LOGO</div>
 
   <div class="header__switch-navigation">
@@ -23,3 +23,14 @@ const { showThemeSwitcher = false } = Astro.props;
     </nav>
   </div>
 </header>
+
+<style>
+  .header {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header__switch-navigation {
+    position: fixed;
+  }
+</style>
